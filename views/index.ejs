@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= locals.site.title2 %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="infoku"></div>
+        <% if(locals.error) { %>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+                <p><%= locals.error %></p>
+            </div>
+        <% } %>
+        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
+            <div class="md:flex">
+                <div class="w-full p-4">
+                    <h1 class="text-2xl font-bold text-gray-800 mb-4 sm:text-3xl"><%= locals.site.title %></h1>
+                   <!-- Description -->
+                    <p class="text-gray-700 text-sm mb-4"><%= locals.site.description %></p>
+
+                    <form id="upload-form" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="image" class="block text-gray-700 font-bold mb-2">Upload Image</label>
+                            <!-- Form Image File Upload -->
+                            <input type="file" accept="image/jpeg,image/png" name="image" id="image" class="bg-gray-100 border-2 w-full p-4 rounded-lg" required>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Remove Background</button>
+                        </div>
+                    </form>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#upload-form").submit(function(event) {
+                event.preventDefault();
+                var form_data = new FormData(this);
+                // Wait info
+                $(".infoku").html('<div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mb-4" role="alert"><p>Please Wait...</p></div>');
+                $.ajax({
+                    type: "POST",
+                    url: "/api/process/nobg",
+                    data: form_data,
+                    dataType: "json",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(result) {
+                        if(result.error) {
+                            $(".infoku").html('<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p>' + result.error + '</p></div>');
+                        } else {
+                            $("#result").html('<hr><div class="mb-4"><img src="' + result.image + '" alt="Processed Image" class="max-w-full"><br><a href="' + result.image + '" download><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Download Image</button></a></div><div class="mb-4"><button onClick="location.reload()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Try another photos</button></div>');
+// Success info
+                            $(".infoku").html('<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p>Success, your image has been processed.</p></div>');
+                        }
+                    },
+                    error: function() {
+                        $(".infoku").html('<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p>Unknown Error, Please Try Again</p></div>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
