@@ -8,5 +8,26 @@
     "express-recaptcha": "^5.1.0",
     "jimp": "^0.22.7",
     "multer": "^1.4.5-lts.1"
-  }
+  },
+  "name": "remove-bg",
+  "version": "1.0.0",
+  "description": "simple site to remove background",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caliphdev/remove-bg.git"
+  },
+  "author": "caliphdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caliphdev/remove-bg/issues"
+  },
+  "homepage": "https://github.com/caliphdev/remove-bg#readme"
 }
