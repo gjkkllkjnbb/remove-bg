@@ -10,10 +10,10 @@ const fs = require('fs');
 const { processImage } = require('./lib/process');
 const { exec } = require('child_process');
 
-if (!fs.existsSync('./temporary')) {
+if (!fs.existsSync(path.join(process.cwd(), 'temporary'))) {
     console.log('Creating Temporary Folder...');
-    fs.mkdirSync('./temporary');
-} 
+    fs.mkdirSync(path.join(process.cwd(), 'temporary'));
+}
 
 // Express
 app.use(bodyParser.json());
