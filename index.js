@@ -57,6 +57,6 @@ app.post("/api/process/nobg", upload.single('image'), async (req, res) => {
 });
 
 // Start Server
-app.listen(setting.port, () => {
-    console.log('Server Started on Port ' + setting.port);
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Server Started on Port ' + (process.env.PORT || 3000));
 });
