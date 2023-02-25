@@ -10,21 +10,21 @@ const fs = require('fs');
 const { processImage } = require('./lib/process');
 const { exec } = require('child_process');
 
-if (!fs.existsSync(path.join(process.cwd(), 'temporary'))) {
+if (!fs.existsSync(path.join(__dirname, 'temporary'))) {
     console.log('Creating Temporary Folder...');
-    fs.mkdirSync(path.join(process.cwd(), 'temporary'));
+    fs.mkdirSync(path.join(__dirname, 'temporary'));
 }
 
 // Express
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(process.cwd(), 'public')));
-app.set('views', path.join(process.cwd(), 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 
 // Multer ( File Upload )
 const storage = multer.diskStorage({
-    destination: path.join(process.cwd(), 'temporary'),
+    destination: path.join(__dirname, 'temporary'),
     filename: function (req, file, cb) {
         cb(null, crypto.randomBytes(16).toString('hex') + path.extname(file.originalname));
     }
