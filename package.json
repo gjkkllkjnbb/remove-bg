@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caliphdev/remove-bg.git"
+    "url": "git+https://github.com/Hiisanzyy/remove-bg.git"
   },
-  "author": "caliphdev",
+  "author": "Sanzy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/caliphdev/remove-bg/issues"
+    "url": "https://github.com/Hiisanzyy/remove-bg/issues"
   },
-  "homepage": "https://github.com/caliphdev/remove-bg#readme"
+  "homepage": "https://github.com/Hiisanzyy/remove-bg#readme"
 }
