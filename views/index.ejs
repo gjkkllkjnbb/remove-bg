@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= locals.site.title2 %></title>
+  <link rel="canonical" href="<%= locals.site.url %>" />
+  <meta content="<%= locals.site.description %>" name="description" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css">
 </head>
 <body class="bg-gray-100">
@@ -20,7 +22,8 @@
                     <h1 class="text-2xl font-bold text-gray-800 mb-4 sm:text-3xl"><%= locals.site.title %></h1>
                    <!-- Description -->
                     <p class="text-gray-700 text-sm mb-4"><%= locals.site.description %></p>
-
+                  <hr>
+                </br>
                     <form id="upload-form" enctype="multipart/form-data">
                         <div class="mb-4">
                             <label for="image" class="block text-gray-700 font-bold mb-2">Upload Image</label>
