@@ -2,6 +2,10 @@
 
 This website allows users to easily remove the background from their images. Simply upload an image and the website will do the rest.
 
+## Demo
+![Remove Background - Remove Image Background Online for Free](https://user-images.githubusercontent.com/92326690/221397232-fac4fa5b-c8b8-4dff-95f1-5c543813c87b.png)
+
+
 ## How to Use
 
 1. Visit the website at [https://rmbg.caliph.me](https://rmbg.caliph.me).
